@@ -3,6 +3,22 @@ package ru.netology;
 public class Radio {
     private int currentVolume;
     private int currentStation;
+    private int minStation;
+    private int maxStation;
+    private int minVolume;
+    private int maxVolume;
+
+    //Конструкторы
+    public Radio() { //значения по умолчанию
+        minStation = 0;
+        maxStation = 9;
+        minVolume = 0;
+        maxVolume = 10;
+    }
+
+    public Radio(int sizeRadio) { //поле значения кол-ва станций
+        maxStation = sizeRadio - 1;
+    }
 
     //Геттеры
     public int getCurrentVolume() {
@@ -15,10 +31,10 @@ public class Radio {
 
     //Сеттер громкости
     public void setCurrentVolume(int newCurrentVolume) {
-        if (newCurrentVolume < 0) {
+        if (newCurrentVolume < minVolume) {
             return;
         }
-        if (newCurrentVolume > 10) {
+        if (newCurrentVolume > maxVolume) {
             return;
         }
         currentVolume = newCurrentVolume;
@@ -26,10 +42,10 @@ public class Radio {
 
     // Сеттер радиостанций
     public void setCurrentStation(int newCurrentStation) {
-        if (newCurrentStation < 0) {
+        if (newCurrentStation < minStation) {
             return;
         }
-        if (newCurrentStation > 9) {
+        if (newCurrentStation > maxStation) {
             return;
         }
         currentStation = newCurrentStation;
@@ -37,33 +53,33 @@ public class Radio {
 
     //Увеличение громкости на +1
     public void increaseVolume() {
-        if (getCurrentVolume() < 10) {
+        if (getCurrentVolume() < maxVolume) {
             setCurrentVolume(currentVolume + 1);
         }
     }
 
     //Понижение громкости на -1
     public void decreaseVolume() {
-        if (getCurrentVolume() > 0) {
+        if (getCurrentVolume() > minVolume) {
             setCurrentVolume(currentVolume - 1);
         }
     }
 
     //Переключение радиостанции на +1
     public void nextStation() {
-        if (getCurrentStation() < 9) {
+        if (getCurrentStation() < maxStation) {
             setCurrentStation(currentStation + 1);
         } else {
-            setCurrentStation(0);
+            setCurrentStation(minStation);
         }
     }
 
     //Переключение радиостанции на -1
     public void prevStation() {
-        if (getCurrentStation() > 0) {
+        if (getCurrentStation() > minStation) {
             setCurrentStation(currentStation - 1);
         } else {
-            setCurrentStation(9);
+            setCurrentStation(maxStation);
         }
     }
 
