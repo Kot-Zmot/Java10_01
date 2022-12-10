@@ -1,72 +1,40 @@
 package ru.netology;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@Data
+@NoArgsConstructor
+
 public class Radio {
     private int currentVolume;
     private int currentStation;
+    private int minStation;
+    private int maxStation;
+    private int minVolume;
+    private int maxVolume;
+    private int sizeRadio;
 
-    //Геттеры
+    public Radio(int sizeRadio) {
+        this.maxStation = sizeRadio -1;
+    }
+
     public int getCurrentVolume() {
         return currentVolume;
+    }
+
+    public void setCurrentVolume(int currentVolume) {
+        this.currentVolume = currentVolume;
     }
 
     public int getCurrentStation() {
         return currentStation;
     }
 
-    //Сеттер громкости
-    public void setCurrentVolume(int newCurrentVolume) {
-        if (newCurrentVolume < 0) {
-            return;
-        }
-        if (newCurrentVolume > 10) {
-            return;
-        }
-        currentVolume = newCurrentVolume;
+    public void setCurrentStation(int currentStation) {
+        this.currentStation = currentStation;
     }
-
-    // Сеттер радиостанций
-    public void setCurrentStation(int newCurrentStation) {
-        if (newCurrentStation < 0) {
-            return;
-        }
-        if (newCurrentStation > 9) {
-            return;
-        }
-        currentStation = newCurrentStation;
-    }
-
-    //Увеличение громкости на +1
-    public void increaseVolume() {
-        if (getCurrentVolume() < 10) {
-            setCurrentVolume(currentVolume + 1);
-        }
-    }
-
-    //Понижение громкости на -1
-    public void decreaseVolume() {
-        if (getCurrentVolume() > 0) {
-            setCurrentVolume(currentVolume - 1);
-        }
-    }
-
-    //Переключение радиостанции на +1
-    public void nextStation() {
-        if (getCurrentStation() < 9) {
-            setCurrentStation(currentStation + 1);
-        } else {
-            setCurrentStation(0);
-        }
-    }
-
-    //Переключение радиостанции на -1
-    public void prevStation() {
-        if (getCurrentStation() > 0) {
-            setCurrentStation(currentStation - 1);
-        } else {
-            setCurrentStation(9);
-        }
-    }
-
-
 }
 
