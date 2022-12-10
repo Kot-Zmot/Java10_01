@@ -53,33 +53,33 @@ public class Radio {
 
     //Увеличение громкости на +1
     public void increaseVolume() {
-        if (getCurrentVolume() < 10) {
+        if (getCurrentVolume() < maxVolume) {
             setCurrentVolume(currentVolume + 1);
         }
     }
 
     //Понижение громкости на -1
     public void decreaseVolume() {
-        if (getCurrentVolume() > 0) {
+        if (getCurrentVolume() > minVolume) {
             setCurrentVolume(currentVolume - 1);
         }
     }
 
     //Переключение радиостанции на +1
     public void nextStation() {
-        if (getCurrentStation() < 9) {
+        if (getCurrentStation() < maxStation) {
             setCurrentStation(currentStation + 1);
         } else {
-            setCurrentStation(0);
+            setCurrentStation(minStation);
         }
     }
 
     //Переключение радиостанции на -1
     public void prevStation() {
-        if (getCurrentStation() > 0) {
+        if (getCurrentStation() > minStation) {
             setCurrentStation(currentStation - 1);
         } else {
-            setCurrentStation(9);
+            setCurrentStation(maxStation);
         }
     }
 

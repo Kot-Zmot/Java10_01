@@ -5,6 +5,42 @@ import org.junit.jupiter.api.Test;
 
 public class RadioTest {
 
+    //Тест конструктора с параметром
+    @Test
+    public void shouldSetConstructorSize() {
+        Radio radio = new Radio(30);
+
+        radio.setCurrentStation(20);
+        int expected = 20;
+        int actual = radio.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void sizedRadioShouldNotSetNextStation() {
+        Radio radio = new Radio(31);
+
+        radio.setCurrentStation(30);
+        radio.nextStation();
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void sizedRadioShouldNotSetPrevStation() {
+        Radio radio = new Radio(31);
+
+        radio.setCurrentStation(0);
+        radio.prevStation();
+        int expected = 30;
+        int actual = radio.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
     //Граничные значения
     @Test
     public void shouldSetMaxVolume() {
